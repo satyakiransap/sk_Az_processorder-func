@@ -5,7 +5,9 @@ from datetime import datetime
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
-@app.route(route="orders/process", methods=["POST"])
+@app.function_name(name="ProcessOrder")
+@app.route(methods=["POST"])
+
 def ProcessOrder(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("ProcessOrder function triggered.")
 
